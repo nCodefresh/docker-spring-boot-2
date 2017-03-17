@@ -1,8 +1,15 @@
 version: '1.0'
 
 steps:
+  eight_docker_clone:
+    type: git-clone
+    description: cloning eight-docker
+    repo: 'https://github.com/nCodefresh/docker-spring-boot-1.git'
+    revision: master
+
   build-step-name:
     type: build
+    working_directory: ${{eight_docker_clone}}
     description: spring maven project
     image-name: ncodefresh/docker-spring-boot-2
     dockerfile: Dockerfile
